@@ -88,7 +88,7 @@
         if (!arguments.length || $.isPlainObject(arguments[0])) {
             //bind
             var settings = !arguments.length ? {} : arguments[0];
-            $(document).on("keypress", function (e) {
+            $(document).on("keydown", function (e) {
                 if (e.keyCode == KEY_CODE_SUPR || e.keyCode == KEY_CODE_DEL) {
                     removeToken($(".tokenizer-token-active"));
                 }
