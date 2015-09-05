@@ -13,7 +13,7 @@ Debemos linkear jQuery Tokenizer después de la importación de jQuery:
 
 Y el css necesario:
 
-```css
+```html
 <link rel="stylesheet" href="<path>/jquery-tokenizer-0.1.css">
 ```
 
