@@ -21,6 +21,7 @@
     color: #575656;
     font-size: 85%;
     margin-right: 3px;
+    cursor: context-menu;
 }
 .tokenizer-token:hover{
     background-color: #D4D4D4;
@@ -36,13 +37,12 @@
 }
 
 .tokenizer-token-close {
-    content: "x";
     margin-left: 3px;
     margin-right: 3px;
-    vertical-align: text-bottom;
     font-size: 80%;
-    font-weight: bold;
     cursor: pointer;
+    vertical-align: baseline;
+    font-weight: bold;
     display: inline-block;
 }
 .tokenizer-token-close:hover {
