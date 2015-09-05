@@ -7,21 +7,21 @@ jQuery Tokenizer Hace uso de jQuery, por tanto necesitamos hacer uso de esta lib
 
 Debemos linkear jQuery Tokenizer después de la importación de jQuery:
 
-	```html
-	<script src="<path>/jquery-tokenizer-0.1.js"></script>
-	```
+```html
+<script src="<path>/jquery-tokenizer-0.1.js"></script>
+```
 
 Y el css necesario:
 
-	```css
-	<link rel="stylesheet" href="<path>/jquery-tokenizer-0.1.css">
-	```
+```css
+<link rel="stylesheet" href="<path>/jquery-tokenizer-0.1.css">
+```
 
 Para comenzar tan solo debemos hacer `.tokenizer([options])` a un campo input. Ejemplo:
 
-	```javascript
-	$("#input1").tokenizer();
-	```
+```javascript
+$("#input1").tokenizer();
+```
 
 Por defecto se realiza separación por "," y ";"
 
@@ -29,17 +29,17 @@ Por defecto se realiza separación por "," y ";"
 
 Por defecto estas son las opciones, todas ellas configurables:
 
-	```javascript
-	{
-		characters: [",", ";"],
-	    repeat: false,
-	    max_all: 0,
-	    max_input: 0,
-	    lang: {
-	        max_all: "Máximo alcanzado"
-	    }
+```javascript
+{
+	characters: [",", ";"],
+	repeat: false,
+	max_all: 0,
+	max_input: 0,
+	lang: {
+	    max_all: "Máximo alcanzado"
 	}
-	```
+}
+```
 
 * `characters`: Caracteres por los que se tokenizará
 * `repeat`: Si queremos permitir que se repitan tokens o no
@@ -49,27 +49,27 @@ Por defecto estas son las opciones, todas ellas configurables:
 
 Opcionalmente podremos modificarlas para un `tokenizer()` concreto pasándole como parámetro la nueva configuración:
 
-	```javascript
-	$("#input1").tokenizer({
-		characters: [" "],
-	    max_all: 10,
-	    max_input: 2
-	});
-	```
+```javascript
+$("#input1").tokenizer({
+	characters: [" "],
+	max_all: 10,
+	max_input: 2
+});
+```
 
 De esta forma la configuración total para el input `#input1` quedaría de la siguiente forma:
 
-	```javascript
-	{
-		characters: [" "],
-	    repeat: false,
-	    max_all: 10,
-	    max_input: 2,
-	    lang: {
-	        max_all: "Máximo alcanzado"
-	    }
+```javascript
+{
+	characters: [" "],
+	repeat: false,
+	max_all: 10,
+	max_input: 2,
+	lang: {
+	    max_all: "Máximo alcanzado"
 	}
-	```
+}
+```
 
 ##Operaciones
 
@@ -81,11 +81,11 @@ Disponemos de una serie de operaciones para gestionar los valores tokenizados, t
 
 Operación `get`, nos permite recoger en una colección los valores tokenizados
 
-	```javascript
-	$("#input1").tokenizer("get");
+```javascript
+$("#input1").tokenizer("get");
 	
-	//return ["Valor1", "Valor2"...]
-	```
+//return ["Valor1", "Valor2"...]
+```
 
 ###Set ("set", String|Array)
 
@@ -93,13 +93,13 @@ Operación `get`, nos permite recoger en una colección los valores tokenizados
 
 Operación `set`, nos permite incorporar valores a los tokens existentes. Nos da la posibilidad de pasar un único valor como String, o varios valores en un Array:
 
-	```javascript
-	$("#input1").tokenizer("set", "Valor3");
+```javascript
+$("#input1").tokenizer("set", "Valor3");
 	
-	//o
+//o
 
-	$("#input1").tokenizer("set", ["Valor3", "Valor4"]);
-	```
+$("#input1").tokenizer("set", ["Valor3", "Valor4"]);
+```
 
 ###Delete ("del", String)
 
@@ -107,12 +107,12 @@ Operación `set`, nos permite incorporar valores a los tokens existentes. Nos da
 
 Operación `del`, nos permite borrar un valor de los tokens existentes. Borrará todos aquellos tokens que coincidan con el String pasado:
 
-	```javascript
-	$("#input1").tokenizer("get");
-	//return ["Valor1", "Valor2", "Valor3"]
+```javascript
+$("#input1").tokenizer("get");
+//return ["Valor1", "Valor2", "Valor3"]
 
-	$("#input1").tokenizer("del", "Valor3");
+$("#input1").tokenizer("del", "Valor3");
 	
-	$("#input1").tokenizer("get");
-	//return ["Valor1", "Valor2"]
-	```
+$("#input1").tokenizer("get");
+//return ["Valor1", "Valor2"]
+```
