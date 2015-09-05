@@ -8,6 +8,7 @@ jQuery Tokenizer Hace uso de jQuery, por tanto necesitamos hacer uso de esta lib
 Debemos linkear jQuery Tokenizer después de la importación de jQuery:
 
 ```html
+<script src="<path>/jquery.js"></script>
 <script src="<path>/jquery-tokenizer-0.1.js"></script>
 ```
 
@@ -22,6 +23,8 @@ Para comenzar tan solo debemos hacer `.tokenizer([options])` a un campo input. E
 ```javascript
 $("#input1").tokenizer();
 ```
+
+Podemos ver una demo en Codepen [aquí](http://codepen.io/lmfresneda/pen/QjwYJK)
 
 Por defecto se realiza separación por "," y ";"
 
