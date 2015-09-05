@@ -1,0 +1,35 @@
+{
+  "name": "jquery-tokenizer",
+  "version": "0.0.1",
+  "description": "A jQuery tool to tokenizer value on input",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmfresneda/jquery-tokenizer.git"
+  },
+  "keywords": [
+    "jquery",
+    "token",
+    "tokenizer",
+    "string",
+    "input"
+  ],
+  "author": "Luis Miguel F. <miguelfr.reg@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lmfresneda/jquery-tokenizer/issues"
+  },
+  "homepage": "https://github.com/lmfresneda/jquery-tokenizer#readme.md",
+  "dependencies": {
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.1.0"
+  }
+}

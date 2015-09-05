@@ -1,0 +1,50 @@
+.tokenizer-values{
+    height: auto;
+    border: 1px solid #C2BEBE;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    padding: 5px;
+    background-color: #F9F9F9;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top: 0;
+    margin-top: 0px;
+}
+
+
+.tokenizer-token{
+    background-color: #EDEAEA;
+    padding: 1px 2px;
+    border: 1px solid grey;
+    border-radius: 2px;
+    color: #575656;
+    font-size: 85%;
+    margin-right: 3px;
+}
+.tokenizer-token:hover{
+    background-color: #D4D4D4;
+}
+.tokenizer-token-max{
+    background-color: #FBF3BC;
+    opacity: 0.7;
+    border-color: #FCB509;
+}
+
+.tokenizer-token-active{
+    background-color: #C2BFBF !important;
+}
+
+.tokenizer-token-close {
+    content: "x";
+    margin-left: 3px;
+    margin-right: 3px;
+    vertical-align: text-bottom;
+    font-size: 80%;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+}
+.tokenizer-token-close:hover {
+    color: #847E7E;
+}
