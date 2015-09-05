@@ -41,7 +41,7 @@
         var getWrapperValues = function ($input) {
             var $wrapperValues = $("<div></div>")
                             .addClass("tokenizer-values")
-                            .width($input.width() - 8);
+                            .width($input.width() - 7);
             return $wrapperValues;
         }
         var removeAllToken = function () {
@@ -106,6 +106,7 @@
                 $input.wrap($wrapper);
                 var $wrapperValues = getWrapperValues($input);
                 $input.parent().append($wrapperValues);
+                $input.css("margin-bottom", "0px");
                 $input.off().on("keypress", function (e) {
                     if (e.keyCode == KEY_CODE_ENTER) {
                         e.preventDefault();
