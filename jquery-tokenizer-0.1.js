@@ -50,7 +50,7 @@
             return $wrapperValues;
         }
         var _removeAllToken = function () {
-            $(".tokenizer-token").remove();
+            $(".tokenizer-token", $this.parent()).remove();
         }
         var _removeToken = function($tokens) {
             $tokens.each(function () {
@@ -82,25 +82,27 @@
         }
         var _getValues = function() {
             var tokens = [];
-            $(".tokenizer-token[data-value]").each(function () {
+            $(".tokenizer-token[data-value]", $this.parent()).each(function () {
                 tokens.push($(this).attr("data-value"));
             });
             return tokens;
         }
         var _buildRegExp = function(separators) {
-            var strReg = "\s*[";
+            var strReg = "\[";
             for (var i = 0; i < separators.length; i++) {
                 strReg += separators[i];
             }
-            strReg += "]\s*";
+            strReg += "]";
             return new RegExp(strReg);
         }
         var _printTokens = function (tokens, $wrapperValues, settings) {
             _removeAllToken();
             $.each(tokens, function (k, el) {
                 el = $.trim(el);
-                var $tk = _getToken(el, settings)
-                $wrapperValues.append($tk);
+                if (el != "") {
+                    var $tk = _getToken(el, settings)
+                    $wrapperValues.append($tk);
+                }
             });
         }
         var _operations = {
