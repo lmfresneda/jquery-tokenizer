@@ -101,7 +101,6 @@
                 el = $.trim(el);
                 var $tk = _getToken(el, settings)
                 $wrapperValues.append($tk);
-                settings.onCreateToken($tk);
             });
         }
         var _operations = {
@@ -233,13 +232,12 @@
         max_input: 0,
         text: {
             max_all: "Máximo alcanzado"
-        },
+        }, 
         onClickToken: function () {
             $(this).toggleClass("tokenizer-token-active");
         },
-        onDeleteToken: function () { },
-        onCreateToken: function ($token) { }
-    };
+        onDeleteToken: function () { }
+    }; 
 
 })(jQuery);
 
