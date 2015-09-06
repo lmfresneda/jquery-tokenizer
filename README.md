@@ -54,8 +54,7 @@ Por defecto estas son las opciones, todas ellas configurables:
     onClickToken: function () {
         $(this).toggleClass("tokenizer-token-active");
     },
-    onDeleteToken: function () { },
-    onCreateToken: function ($token) { }
+    onDeleteToken: function () { }
 }
 ```
 
@@ -67,7 +66,6 @@ Por defecto estas son las opciones, todas ellas configurables:
 * `text`: Lenguaje general
 * `onClickToken`: Función llamada al hacer click en un token concreto. Por defecto se añade/retira la clase `.tokenizer-token-active` que sirve para luego ser eliminado o no al pulsar la tecla SUPR. 
 * `onDeleteToken`: Función llamada justo después de ser eliminado un token. Por defecto no se hace nada.
-* `onCreateToken`: Función llamada justo después de ser creado un token. Por defecto no se hace nada. El token será pasado como parámetro.
 
 Opcionalmente podremos modificarlas para un `tokenizer()` concreto pasándole como parámetro la nueva configuración:
 
@@ -99,8 +97,7 @@ De esta forma la configuración total para el input `#input1` quedaría de la si
     },
     onDeleteToken: function () {
 		alert("Token borrado!");
-	},
-    onCreateToken: function ($token) { }
+	}
 }
 ```
 
