@@ -11,14 +11,32 @@
 </head>
 <body>
     <form id="form1">
-        <input type="text" id="tokeniza" name="tokeniza" size="85" />
+        <p>Write tokens with spaces, comma or semicolon separated and press Enter</p>
+        <input type="text" id="input1" name="input1" size="85" />
+        <p>Write with spaces</p>
+        <input type="text" id="input2" name="input2" size="85" />
+        <p>Click on tokens</p>
+        <input type="text" id="input3" name="input3" size="85" />
+        <div id="notes"></div>
     </form>
         
         <script src="../lib/jquery-1.11.3.min.js"></script>
         <script src="../jquery-tokenizer-0.1.js"></script>
         <script>
             $(document).ready(function () {
-                $("#tokeniza").tokenizer();
+                $("#input1").tokenizer({
+                    separators: [" ", ",", ";"]
+                });
+                $("#input2").tokenizer({
+                    keyCodeCreate: $.tokenizer.KEY_CODE.BACKSPACE
+                });
+                $("#input3").tokenizer({
+                    onClickToken: function () {
+                        $(this).toggleClass("tokenizer-token-active");
+                        $("#notes").append($("<p></p>").html("Token '" + $(this).attr("data-value") + "' clickeado"));
+                    }
+                });
+                $("#input3").tokenizer("set", ["Value1", "Value2", "Value3"]);
             });
         </script>
 </body>
