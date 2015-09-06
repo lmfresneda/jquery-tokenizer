@@ -5,7 +5,7 @@ var gulp = require('gulp'),                     //gulp aplicación
     sourcemaps = require('gulp-sourcemaps');    //para añadir sourcemaps a archivos comprimidos por uglify
 
 
-gulp.task("watch", function () {
+gulp.task("default", function () {
     gulp.watch('./jquery-tokenizer-0.1.js', ['ujs']);
 });
 
@@ -16,4 +16,4 @@ gulp.task("ujs", function () {
       .pipe(sourcemaps.write())
       .pipe(concat('jquery-tokenizer-0.1.min.js'))
       .pipe(gulp.dest("./"));
-}); 
+});  
