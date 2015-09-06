@@ -30,7 +30,12 @@ Por defecto se realiza separación por "," y ";"
 
 ##Cómo funciona
 
-Su funcionamiento es muy simple
+Su funcionamiento es muy simple. Una vez hecho el `.tokenizer([options])` nos aparecerá un nuevo área debajo del input, en el cual irán apareciendo los tokens creados.
+
+Si hacemos click en uno o varios tokens, estos se irán marcando (a no ser que hayamos cambiado la función `onClickToken`. Al pulsar la tecla SUPR estos serán borrados.
+
+También podemos borrarlos haciendo click en su "x" correspondiente.
+
 
 ##Opciones
 
@@ -60,7 +65,7 @@ Por defecto estas son las opciones, todas ellas configurables:
 * `max_all`: Nº máximo de tokens permitidos en total
 * `max_input`: Nº máximo de tokens permitidos cada vez
 * `text`: Lenguaje general
-* `onClickToken`: Función llamada al hacer click en un token concreto. Por defecto se añade/retira la clase `.tokenizer-token-active` que sirve para luego ser eliminado o no al pulsar las teclas DEL o SUPR. 
+* `onClickToken`: Función llamada al hacer click en un token concreto. Por defecto se añade/retira la clase `.tokenizer-token-active` que sirve para luego ser eliminado o no al pulsar la tecla SUPR. 
 * `onDeleteToken`: Función llamada justo después de ser eliminado un token. Por defecto no se hace nada.
 * `onCreateToken`: Función llamada justo después de ser creado un token. Por defecto no se hace nada. El token será pasado como parámetro.
 
