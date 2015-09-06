@@ -28,6 +28,10 @@ Podemos ver una demo en Codepen [aquí](http://codepen.io/lmfresneda/pen/QjwYJK)
 
 Por defecto se realiza separación por "," y ";"
 
+##Cómo funciona
+
+Su funcionamiento es muy simple
+
 ##Opciones
 
 Por defecto estas son las opciones, todas ellas configurables:
@@ -35,20 +39,30 @@ Por defecto estas son las opciones, todas ellas configurables:
 ```javascript
 {
 	separators: [",", ";"],
+	keyCodeCreate: $.tokenizer.KEY_CODE.ENTER,
 	repeat: false,
 	max_all: 0,
 	max_input: 0,
 	text: {
 	    max_all: "Máximo alcanzado"
-	}
+	},
+    onClickToken: function () {
+        $(this).toggleClass("tokenizer-token-active");
+    },
+    onDeleteToken: function () { },
+    onCreateToken: function ($token) { }
 }
 ```
 
 * `separators`: Caracteres por los que se tokenizará
+* `keyCodeCreate`: Tecla que hará crear los tokens, por defecto tecla ENTER. Disponemos de una utilidad en `$.tokenizer.KEY_CODE` con los códigos de las principales teclas no alfanuméricas, Aunque podremos poner directamente el `keyCode`.
 * `repeat`: Si queremos permitir que se repitan tokens o no
 * `max_all`: Nº máximo de tokens permitidos en total
 * `max_input`: Nº máximo de tokens permitidos cada vez
 * `text`: Lenguaje general
+* `onClickToken`: Función llamada al hacer click en un token concreto. Por defecto se añade/retira la clase `.tokenizer-token-active` que sirve para luego ser eliminado o no al pulsar las teclas DEL o SUPR. 
+* `onDeleteToken`: Función llamada justo después de ser eliminado un token. Por defecto no se hace nada.
+* `onCreateToken`: Función llamada justo después de ser creado un token. Por defecto no se hace nada. El token será pasado como parámetro.
 
 Opcionalmente podremos modificarlas para un `tokenizer()` concreto pasándole como parámetro la nueva configuración:
 
@@ -56,7 +70,10 @@ Opcionalmente podremos modificarlas para un `tokenizer()` concreto pasándole co
 $("#input1").tokenizer({
 	separators: [" "],
 	max_all: 10,
-	max_input: 2
+	max_input: 2,
+    onDeleteToken: function () {
+		alert("Token borrado con éxito!");
+	}
 });
 ```
 
@@ -65,12 +82,20 @@ De esta forma la configuración total para el input `#input1` quedaría de la si
 ```javascript
 {
 	separators: [" "],
+	keyCodeCreate: $.tokenizer.KEY_CODE.ENTER,
 	repeat: false,
 	max_all: 10,
 	max_input: 2,
 	text: {
 	    max_all: "Máximo alcanzado"
-	}
+	},
+    onClickToken: function () {
+        $(this).toggleClass("tokenizer-token-active");
+    },
+    onDeleteToken: function () {
+		alert("Token borrado!");
+	},
+    onCreateToken: function ($token) { }
 }
 ```
 

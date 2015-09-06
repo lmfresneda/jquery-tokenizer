@@ -9,15 +9,29 @@
 ;(function ($) { 
     "use strict";
 
-    $.tokenizer = $.tk = {
-        version: "0.1"
+    $.tokenizer = {
+        version: "0.1",
+        KEY_CODE: {
+            ARROW_DOWN: 40,
+            ARROW_LEFT: 37,
+            ARROW_RIGHT: 39,
+            ARROW_TOP: 38,
+            BACKSPACE: 32,
+            COMMA: 188,
+            CTRL: 17,
+            DEL: 8,
+            DOT: 190,
+            ENTER: 13,
+            ESC: 27,
+            SHIFT: 16,
+            SUPR: 46,
+            TAB: 9
+        }
     };
 
-    $.fn.tokenizer = $.fn.tk = function () {
+    $.fn.tokenizer = function () {
         var $this = this;
-        var KEY_CODE_ENTER = 13,
-            KEY_CODE_SUPR = 46,
-            KEY_CODE_DEL = 8;
+
         //PRIVATE METHODS
         var _uniqueArray = function (array) {
             var a = array.concat();
@@ -43,7 +57,7 @@
                 $(this).remove();
             });
         }
-        var _getToken = function (value) {
+        var _getToken = function (value, settings) {
             var $token = $("<span></span>")
                             .addClass("tokenizer-token")
                             .text(value)
@@ -51,16 +65,14 @@
                             .prepend($("<span></span>")
                                         .addClass("tokenizer-token-close")
                                         .text("x"));
-            $token.on("click", function () {
-                $(this).toggleClass("tokenizer-token-active");
-            });
+            $token.on("click", settings.onClickToken);
             $token.find("span").on("click", function () {
                 _removeToken($token);
             });
             return $token;  
         }
-        var _showMaxAll = function ($wrapperValues) {
-            var $token = _getToken($.fn.tokenizer.defaults.text.max_all);
+        var _showMaxAll = function ($wrapperValues, settings) {
+            var $token = _getToken($.fn.tokenizer.defaults.text.max_all, settings);
             $token.addClass("tokenizer-token-max");
             $token.removeAttr("data-value");
             $wrapperValues.append($token);
@@ -83,11 +95,13 @@
             strReg += "]\s*";
             return new RegExp(strReg);
         }
-        var _printTokens = function (tokens, $wrapperValues) {
+        var _printTokens = function (tokens, $wrapperValues, settings) {
             _removeAllToken();
             $.each(tokens, function (k, el) {
                 el = $.trim(el);
-                $wrapperValues.append(_getToken(el));
+                var $tk = _getToken(el, settings)
+                $wrapperValues.append($tk);
+                settings.onCreateToken($tk);
             });
         }
         var _operations = {
@@ -112,7 +126,7 @@
                     throw new Error("Segundo parámetro inválido, se requiere ('option', String|Array)");
                 }
                 $this.val(str);
-                $this.trigger($.Event("keypress", { keyCode: KEY_CODE_ENTER }));
+                $this.trigger($.Event("keydown", { keyCode: $.tokenizer.KEY_CODE.ENTER }));
                 return $this;
             },
             del: function (args) {
@@ -120,7 +134,7 @@
                     throw new Error("Número de argumentos inválidos, se requiere ('option', String)");
                 }
                 if (typeof args[1] === "string") {
-                    $(".tokenizer-token[data-value='" + args[1] + "']").remove();
+                    _removeToken($(".tokenizer-token[data-value='" + args[1] + "']"));
                 } else {
                     throw new Error("Segundo parámetro inválido, se requiere ('option', String)");
                 }
@@ -132,8 +146,9 @@
             //INIT BINDING
             var settings = !arguments.length ? {} : arguments[0];
             $(document).on("keydown", function (e) {
-                if (e.keyCode == KEY_CODE_SUPR || e.keyCode == KEY_CODE_DEL) {
+                if (e.keyCode == $.tokenizer.KEY_CODE.SUPR || e.keyCode == $.tokenizer.KEY_CODE.DEL) {
                     _removeToken($(".tokenizer-token-active"));
+                    settings.onDeleteToken();
                 }
             });
 
@@ -150,8 +165,8 @@
                 $input.parent().append($wrapperValues);
                 $input.css("margin-bottom", "0px");
 
-                $input.off().on("keypress", function (e) {
-                    if (e.keyCode == KEY_CODE_ENTER) {
+                $input.off().on("keydown", function (e) {
+                    if (e.keyCode == settings.keyCodeCreate) {
                         e.preventDefault();
                         if ($.trim($input.val()) != "") {
                             var reg = _buildRegExp(settings.separators);
@@ -177,10 +192,10 @@
                                 tokens = _uniqueArray(tokens);
                             }
 
-                            _printTokens(tokens, $wrapperValues);
+                            _printTokens(tokens, $wrapperValues, settings);
 
                             if (showMax)
-                                _showMaxAll($wrapperValues);
+                                _showMaxAll($wrapperValues, settings);
                         }
                         $input.val("");
                     }
@@ -210,14 +225,20 @@
     };
 
     //SETTINGS
-    $.fn.tokenizer.defaults = $.fn.tk.defaults = {
+    $.fn.tokenizer.defaults = {
         separators: [",", ";"],
+        keyCodeCreate: $.tokenizer.KEY_CODE.BACKSPACE,
         repeat: false,
         max_all: 0,
         max_input: 0,
         text: {
             max_all: "Máximo alcanzado"
-        }
+        },
+        onClickToken: function () {
+            $(this).toggleClass("tokenizer-token-active");
+        },
+        onDeleteToken: function () { },
+        onCreateToken: function ($token) { }
     };
 
 })(jQuery);
