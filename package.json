@@ -2,7 +2,7 @@
   "name": "jquery-tokenizer",
   "version": "0.0.1",
   "description": "A jQuery tool to tokenizer value on input",
-  "main": "gulpfile.js",
+  "main": "jquery-tokenizer-0.1.js",
   "directories": {
     "test": "test"
   },
