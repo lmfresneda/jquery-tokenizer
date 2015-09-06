@@ -34,27 +34,27 @@ Por defecto estas son las opciones, todas ellas configurables:
 
 ```javascript
 {
-	characters: [",", ";"],
+	separators: [",", ";"],
 	repeat: false,
 	max_all: 0,
 	max_input: 0,
-	lang: {
+	text: {
 	    max_all: "Máximo alcanzado"
 	}
 }
 ```
 
-* `characters`: Caracteres por los que se tokenizará
+* `separators`: Caracteres por los que se tokenizará
 * `repeat`: Si queremos permitir que se repitan tokens o no
 * `max_all`: Nº máximo de tokens permitidos en total
 * `max_input`: Nº máximo de tokens permitidos cada vez
-* `lang`: Lenguaje general
+* `text`: Lenguaje general
 
 Opcionalmente podremos modificarlas para un `tokenizer()` concreto pasándole como parámetro la nueva configuración:
 
 ```javascript
 $("#input1").tokenizer({
-	characters: [" "],
+	separators: [" "],
 	max_all: 10,
 	max_input: 2
 });
@@ -64,11 +64,11 @@ De esta forma la configuración total para el input `#input1` quedaría de la si
 
 ```javascript
 {
-	characters: [" "],
+	separators: [" "],
 	repeat: false,
 	max_all: 10,
 	max_input: 2,
-	lang: {
+	text: {
 	    max_all: "Máximo alcanzado"
 	}
 }
