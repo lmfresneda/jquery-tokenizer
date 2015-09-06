@@ -146,7 +146,7 @@
             //INIT BINDING
             var settings = !arguments.length ? {} : arguments[0];
             $(document).on("keydown", function (e) {
-                if (e.keyCode == $.tokenizer.KEY_CODE.SUPR || e.keyCode == $.tokenizer.KEY_CODE.DEL) {
+                if (e.keyCode == $.tokenizer.KEY_CODE.SUPR) {
                     _removeToken($(".tokenizer-token-active"));
                     settings.onDeleteToken();
                 }
@@ -227,7 +227,7 @@
     //SETTINGS
     $.fn.tokenizer.defaults = {
         separators: [",", ";"],
-        keyCodeCreate: $.tokenizer.KEY_CODE.BACKSPACE,
+        keyCodeCreate: $.tokenizer.KEY_CODE.ENTER,
         repeat: false,
         max_all: 0,
         max_input: 0,
