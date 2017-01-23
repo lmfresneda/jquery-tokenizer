@@ -1,43 +1,27 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Test jQuery Tokenizer</title>
-    <link rel="stylesheet" href="../jquery-tokenizer-0.1.css">
-    <style>
-        body{
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-    </style>
+  <title>Test jQuery Tokenizer 1.0.0</title>
+  <link rel="stylesheet" href="../src/jquery-tokenizer-1.0.0.css">
+  <style>
+    body{
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+  </style>
 </head>
 <body>
-    <form id="form1">
-        <p>Write tokens with spaces, comma or semicolon separated and press Enter</p>
-        <input type="text" id="input1" name="input1" size="85" />
-        <p>Write with spaces</p>
-        <input type="text" id="input2" name="input2" size="85" />
-        <p>Click on tokens</p>
-        <input type="text" id="input3" name="input3" size="85" />
-        <div id="notes"></div>
-    </form>
-        
-        <script src="../lib/jquery-1.11.3.min.js"></script>
-        <script src="../jquery-tokenizer-0.1.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#input1").tokenizer({
-                    separators: [" ", ",", ";"]
-                });
-                $("#input2").tokenizer({
-                    keyCodeCreate: $.tokenizer.KEY_CODE.BACKSPACE
-                });
-                $("#input3").tokenizer({
-                    onClickToken: function () {
-                        $(this).toggleClass("tokenizer-token-active");
-                        $("#notes").append($("<p></p>").html("Token '" + $(this).attr("data-value") + "' clickeado"));
-                    }
-                });
-                $("#input3").tokenizer("set", ["Value1", "Value2", "Value3"]);
-            });
-        </script>
+<form id="form1">
+  <p>Write tokens with spaces, comma or semicolon separated and press Enter</p>
+  <input type="text" id="input1" name="input1" size="85" />
+  <p>Write with spaces</p>
+  <input type="text" id="input2" name="input2" size="85" />
+  <p>Click on tokens and delete</p>
+  <input type="text" id="input3" name="input3" size="85" />
+  <div id="notes"></div>
+</form>
+
+<script src="../vendors/jquery-3.1.1.min.js"></script>
+<script src="../dist/jquery-tokenizer-1.0.0.min.js"></script>
+<script src="./app.js"></script>
 </body>
 </html>
