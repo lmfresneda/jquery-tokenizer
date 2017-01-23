@@ -1,4 +1,4 @@
-# jquery-tokenizer - v0.1
+# jquery-tokenizer - v1.0.0
 Una herramienta jQuery para tokenizar valores de campos input, verlos de forma elegante y gestionar sus valores de forma sencilla.
 
 ##Cómo usar
@@ -9,13 +9,13 @@ Debemos linkear jQuery Tokenizer después de la importación de jQuery:
 
 ```html
 <script src="<path>/jquery.js"></script>
-<script src="<path>/jquery-tokenizer-0.1.js"></script>
+<script src="<path>/jquery-tokenizer-1.0.0.min.js"></script>
 ```
 
 Y el css necesario:
 
 ```html
-<link rel="stylesheet" href="<path>/jquery-tokenizer-0.1.css">
+<link rel="stylesheet" href="<path>/jquery-tokenizer-1.0.0.min.css">
 ```
 
 Para comenzar tan solo debemos hacer `.tokenizer([options])` a un campo input. Ejemplo:
@@ -51,10 +51,10 @@ Por defecto estas son las opciones, todas ellas configurables:
 	text: {
 	    max_all: "Máximo alcanzado"
 	},
-    onClickToken: function () {
-        $(this).toggleClass("tokenizer-token-active");
-    },
-    onDeleteToken: function () { }
+  onClickToken: function () {
+      $(this).toggleClass("tokenizer-token-active");
+  },
+  onDeleteToken: function () { }
 }
 ```
 
@@ -67,16 +67,23 @@ Por defecto estas son las opciones, todas ellas configurables:
 * `onClickToken`: Función llamada al hacer click en un token concreto. Por defecto se añade/retira la clase `.tokenizer-token-active` que sirve para luego ser eliminado o no al pulsar la tecla SUPR. 
 * `onDeleteToken`: Función llamada justo después de ser eliminado un token. Por defecto no se hace nada.
 
-Opcionalmente podremos modificarlas para un `tokenizer()` concreto pasándole como parámetro la nueva configuración:
+Podemos modificar todas las opciones por defecto mediante el acceso a `$.fn.tokenizer.defaults`, por ejemplo:
+
+```js
+$.fn.tokenizer.defaults.onDeleteToken = function($tokens){
+  alert('Tokens borrados ' + $tokens.length)
+}
+```
+
+Con este ejemplo vemos también la forma de marcar un callback para los tokens borrados.
+
+Opcionalmente y salvo la opción `onDeleteToken` que es global, podremos modificar las opciones para un `tokenizer()` concreto pasándole como parámetro la nueva configuración:
 
 ```javascript
 $("#input1").tokenizer({
 	separators: [" "],
 	max_all: 10,
-	max_input: 2,
-    onDeleteToken: function () {
-		alert("Token borrado con éxito!");
-	}
+	max_input: 2
 });
 ```
 
@@ -90,14 +97,11 @@ De esta forma la configuración total para el input `#input1` quedaría de la si
 	max_all: 10,
 	max_input: 2,
 	text: {
-	    max_all: "Máximo alcanzado"
+    max_all: "Máximo alcanzado"
 	},
-    onClickToken: function () {
-        $(this).toggleClass("tokenizer-token-active");
-    },
-    onDeleteToken: function () {
-		alert("Token borrado!");
-	}
+  onClickToken: function () {
+    $(this).toggleClass("tokenizer-token-active");
+  }
 }
 ```
 
