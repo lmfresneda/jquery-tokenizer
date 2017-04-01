@@ -2,7 +2,7 @@
 
 A jQuery tool to tokenize input field values, view them elegantly and manage their values in a simple way.
 
-##How to use
+## How to use
 
 jQuery is dependent on jQuery, therefore we need to use this library.
 
@@ -40,7 +40,7 @@ We can see a demo in Codepen [here](http://codepen.io/lmfresneda/pen/QjwYJK)
 
 "," and ";" separated by default.
 
-##How does it work
+## How does it work
 
 Its operation is very simple. Once the `.tokenizer ([options])` is done, a new area will appear below the input, in which the created tokens will appear.
 
@@ -49,7 +49,7 @@ If we click on one or more tokens, these will be marked (unless we have changed 
 We can also delete them by clicking on their corresponding "x".
 
 
-##Options
+## Options
 
 By default these are the options, all configurable:
 
@@ -117,11 +117,11 @@ In this way the total configuration for the input `#input1` would be as follows:
 }
 ```
 
-##Operations
+## Operations
 
 We have some operations to manage tokenized values, all with aliases for greater compatibility:
 
-###Get ("get")
+### Get ("get")
 
 **Alias**: `("val")`
 
@@ -133,7 +133,7 @@ $("#input1").tokenizer("get");
 //return ["Value1", "Value2"...]
 ```
 
-###Set ("set", String|Array)
+### Set ("set", String|Array)
 
 **Alias**: `("input", String|Array)`
 
@@ -147,7 +147,7 @@ $("#input1").tokenizer("set", "Value3");
 $("#input1").tokenizer("set", ["Value3", "Value4"]);
 ```
 
-###Delete ("del", String)
+### Delete ("del", String)
 
 **Alias**: `("delete", String)`, `("rm", String)`, `("remove", String)`
 
