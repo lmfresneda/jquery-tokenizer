@@ -1,5 +1,7 @@
 # jquery-tokenizer - v1.0.0
 
+[![npm](https://img.shields.io/npm/v/jquery-tokenizer.svg?style=flat-square)](https://www.npmjs.com/package/jquery-tokenizer) [![npm](https://img.shields.io/npm/dt/jquery-tokenizer.svg?style=flat-square)](https://www.npmjs.com/package/jquery-tokenizer) 
+
 A jQuery tool to tokenize input field values, view them elegantly and manage their values in a simple way.
 
 ## How to use
